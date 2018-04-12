@@ -1,0 +1,36 @@
+{
+  "name": "mern",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "foreman": "^2.0.0",
+    "history": "^4.7.2",
+    "marked": "^0.3.19",
+    "mongoose": "^5.0.13",
+    "nodemon": "^1.17.3",
+    "npm": "^5.8.0",
+    "react": "^16.3.1",
+    "react-cookie": "^2.1.4",
+    "react-dom": "^16.3.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "start-dev": "nf start -p 3000",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-router": "^4.2.0"
+  }
+}
