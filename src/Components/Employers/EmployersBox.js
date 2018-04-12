@@ -27,7 +27,7 @@ class EmployersBox extends Component {
     }
 
     loadCommentsFromServer = () => {
-        axios.get('http://mern-app-sviatkuzh.herokuapp.com/employers', {withCredentials: true})
+        axios.get('https://mern-app-sviatkuzh.herokuapp.com/', {withCredentials: true})
             .then(res => {
                 if (res.data.sess === undefined || res.data.sess === '') {
                     this.setState({
