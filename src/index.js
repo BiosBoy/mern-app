@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Redirect, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';

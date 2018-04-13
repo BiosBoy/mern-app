@@ -10,14 +10,18 @@ let HideModal = (id, targetContainer, onCommentUpdate, target) => {
     if (closestHideX || closestHide) {
         let modal = document.querySelector('.modal');
         let modalDialog = document.querySelector('.modal-dialog');
+
         modal.classList.remove(DOMClassNames().modalShow, DOMClassNames().modalOpacityShow, DOMClassNames().modalfadeBackground);
         modalDialog.classList.remove(DOMClassNames().modalDialogMargin);
         document.querySelector('.containerModal').remove();
+
         console.log('Employer updation had cancel! Employer ID: ', id);
     } else if (closestSave) {
-        changeWaitRes(closestSave.parentNode, false);
         console.log('Employer update clicked! Employer ID: ', id);
+
+        changeWaitRes(closestSave.parentNode, false);
         let employer = GetNewParams();
+        
         onCommentUpdate(id, employer);
     } else {
         return;

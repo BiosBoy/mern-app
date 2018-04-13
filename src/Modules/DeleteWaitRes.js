@@ -1,6 +1,6 @@
 const deleteWaitRes = (targetContainer, status) => {
     console.log('deleteWaitRes', targetContainer);
-    let targetContainerCoordBottom = targetContainer.getBoundingClientRect().bottom;
+
     let div = document.createElement('div'); 
     div.classList.add('loader-mini', 'loader-wait-delete-employer');
     

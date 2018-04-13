@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
-import Header from  '../Header/Header';
-import Footer from '../Footer/Footer';
+import axios from 'axios';
+import DOMClassNames from '../../Variables/DOMClassNames'
 import registrationError from '../../Modules/RegistrationError'
 import registrationWaitRes from '../../Modules/RegistrationWaitRes';
 import regPassChecker from '../../Modules/RegPassChecker';
-import Preloader from '../Preloader/Preloader'
 import preloaderRunner from '../../Modules/PreloaderRunner'
-import axios from 'axios';
+import Header from  '../Header/Header';
+import Footer from '../Footer/Footer';
 
 class RegistrationPage extends Component {
     constructor(props) {
@@ -25,10 +25,11 @@ class RegistrationPage extends Component {
     handleClick = () => {
         axios.get('http://localhost:3016/auth/logout', {withCredentials: true})
             .then(() => {
+                    preloaderRunner();
                     console.log('Logout successful!');
                     setTimeout(() => 
                         this.setState({ navigate: false }), 
-                        2000);
+                        1000);
                 }
             )
             .catch(err => {
@@ -132,8 +133,6 @@ class RegistrationPage extends Component {
     componentWillUnmount() {
         this.handleClick === null;
         this.handleSubmit === null;
-        registrationError(null);
-        registrationWaitRes(null);
     };
 
     render() {
@@ -148,46 +147,46 @@ class RegistrationPage extends Component {
             <Fragment>
                 <Header/>
                 {this.state.navigate 
-                ? <div className="registred-already">
-                    <div className="registred-already-text col-lg-9 mx-auto d-flex flex-column justify-content-center text-center align-items-center">
+                ? <div className={DOMClassNames().logoutRegisteredAlready}>
+                    <div className={DOMClassNames().logoutRegisteredAlreadyText}>
                         <h1>You are already registered!</h1>
                         <p>To register an another account - please, make logout first.</p>
                     </div>
-                    <div className="registred-already-buttons d-flex row align-items-center align-middle justify-content-center">
+                    <div className={DOMClassNames().logoutRegisteredAlreadyButtons}>
                         <p>Click the button to logout</p>
-                        <button onClick={this.handleClick} className="btn btn-success">Logout</button>
+                        <button onClick={this.handleClick} className={DOMClassNames().logoutRegisteredAlreadyButton}>Logout</button>
                     </div>
                   </div>
-                : <div className="container py-5">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <h1 className="text-center mb-5">Registration new User</h1>
-                            <div className="col-lg-12 pr-0 pl-0">
-                                <div className="col pr-0 pl-0">
-                                    <div className="card border-secondary">
-                                        <div className="card-header">
-                                            <h3 className="mb-0 my-2">Sign Up</h3>
+                : <div className={DOMClassNames().RegistrationContainer}>
+                    <div className={DOMClassNames().RegistrationContainerRow}>
+                        <div className={DOMClassNames().RegistrationRowCol}>
+                            <h1 className={DOMClassNames().RegistrationColH1}>Registration new User</h1>
+                            <div className={DOMClassNames().RegistrationColLg12}>
+                                <div className={DOMClassNames().RegistrationCol}>
+                                    <div className={DOMClassNames().RegistrationCard}>
+                                        <div className={DOMClassNames().RegistrationCardHeader}>
+                                            <h3 className={DOMClassNames().RegistrationCardHeaderH3}>Sign Up</h3>
                                         </div>
-                                        <div className="card-body">
-                                            <form onSubmit={this.handleSubmit} onChange={this.handleChange} className="form" role="form" autoComplete="off">
-                                                <div className="form-group">
+                                        <div className={DOMClassNames().RegistrationCardBody}>
+                                            <form onSubmit={this.handleSubmit} onChange={this.handleChange} className="form"  autoComplete="off">
+                                                <div className={DOMClassNames().RegistrationFormGroup}>
                                                     <label htmlFor="inputName">Name</label>
-                                                    <input name="username" type="text" className="form-control" id="inputName" placeholder="full name" required/>
+                                                    <input name="username" type="text" className={DOMClassNames().RegistrationFormControl} id="inputName" placeholder="full name" required/>
                                                 </div>
-                                                <div className="form-group">
+                                                <div className={DOMClassNames().RegistrationFormGroup}>
                                                     <label htmlFor="inputEmail3">Email</label>
-                                                    <input name="email" type="email" className="form-control" id="inputEmail3" placeholder="email@gmail.com" required/>
+                                                    <input name="email" type="email" className={DOMClassNames().RegistrationFormControl} id="inputEmail3" placeholder="email@gmail.com" required/>
                                                 </div>
-                                                <div className="form-group">
+                                                <div className={DOMClassNames().RegistrationFormGroup}>
                                                     <label htmlFor="inputPassword3">Password</label>
-                                                    <input value={this.state.passValue  || ''} name="password" type="password" className="form-control" id="inputPassword3" min="5" placeholder="password" title="At least 6 characters with letters and numbers" required/>
+                                                    <input value={this.state.passValue  || ''} name="password" type="password" className={DOMClassNames().RegistrationFormControl} id="inputPassword3" min="5" placeholder="password" title="At least 6 characters with letters and numbers" required/>
                                                 </div>
-                                                <div className="form-group">
+                                                <div className={DOMClassNames().RegistrationFormGroup}>
                                                     <label htmlFor="inputVerify3">Verify</label>
-                                                    <input value={this.state.passValueConf  || ''} name="passwordConf" type="password" className="form-control" id="inputVerify3" min="5" placeholder="password (again)" required/>
+                                                    <input value={this.state.passValueConf  || ''} name="passwordConf" type="password" className={DOMClassNames().RegistrationFormControl} id="inputVerify3" min="5" placeholder="password (again)" required/>
                                                 </div>
-                                                <div className="form-group">
-                                                    <button type="submit" className="btn btn-success btn-lg float-right">Register</button>
+                                                <div className={DOMClassNames().RegistrationFormGroup}>
+                                                    <button type="submit" className={DOMClassNames().RegistrationFormButton}>Register</button>
                                                 </div>
                                             </form>
                                         </div>

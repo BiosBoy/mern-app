@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import DOMClassNames from '../../Variables/DOMClassNames'
 import Header from  '../Header/Header';
 import Footer from '../Footer/Footer';
-import Preloader from '../Preloader/Preloader';
 import loginError from '../../Modules/LoginError';
 import loginWaitRes from '../../Modules/LoginWaitRes';
 import preloaderRunner from '../../Modules/PreloaderRunner';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -21,7 +21,6 @@ class LoginPage extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        let target = e.target;
 
         let userLogin = {
             logemail: e.target.email.value,
@@ -126,28 +125,28 @@ class LoginPage extends Component {
             <Fragment>
                 <Header/>
                 {this.state.navigate === true
-                ? <div className="login-already col-lg-9 mx-auto d-flex flex-column justify-content-center text-center align-items-center">
+                ? <div className={DOMClassNames().loginAlready}>
                     <h2>You already loggined!</h2>
                     <p>You successul loggen previously, so you does not need to login again, just go ahead:</p>
-                    <button name="redirect-employers" className="btn btn-success mr-1" onClick={this.handleClick}>Go to the Employers List!</button>
+                    <button name="redirect-employers" className={DOMClassNames().loginRedirectToEmployers} onClick={this.handleClick}>Go to the Employers List!</button>
                   </div>
-                : <div className="login-form">
+                : <div className={DOMClassNames().loginForm}>
                     <h1>This is the Auth Page!</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="email_login">E-mail</label>
-                            <input name="email" type="email" className="form-control email_login"  aria-describedby="emailHelp" placeholder="Enter email" required />
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input name="email" type="email" className={DOMClassNames().emailLogin} aria-describedby="emailHelp" placeholder="Enter email" required />
+                            <small id="emailHelp" className={DOMClassNames().loginText}>We'll never share your email with anyone else.</small>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password_login">Password</label>
-                            <input name="password" type="password" className="form-control password_login" placeholder="Password" required />
+                            <input name="password" type="password" className={DOMClassNames().passwordLogin} placeholder="Password" required />
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className={DOMClassNames().loginButton}>Submit</button>
                     </form>
-                    <div className="d-flex justify-content-end align-items-center mt-4">
-                        <span className="mr-2">Still does not have an account?</span> 
-                        <button name="redirect-registration" className="btn btn-outline-secondary" onClick={this.handleClick}>Sign up now!</button>
+                    <div className={DOMClassNames().loginRedirToRegist}>
+                        <span className={DOMClassNames().loginRedirToRegistText}>Still does not have an account?</span> 
+                        <button name="redirect-registration" className={DOMClassNames().loginRedirToRegistButton} onClick={this.handleClick}>Sign up now!</button>
                     </div>
                 </div>}
                 <Footer/>

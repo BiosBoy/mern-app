@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import DOMClassNames from '../../Variables/DOMClassNames'
 import UpdateContent from '../../Modules/UpdateContent'
 import ShowModal from '../../Modules/ShowModal'
 import ModalWindow from './ModalWindow'
-import DOMClassNames from '../../Variables/DOMClassNames'
 
 class Employer extends Component {
     constructor(props) {

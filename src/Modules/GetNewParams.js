@@ -1,5 +1,3 @@
-import DOMClassNames from '../Variables/DOMClassNames'
-
 let GetNewParams = () => {
     let tempFirst_name = document.querySelector('.tempFirst_name');
     let tempLast_name = document.querySelector('.tempLast_name');

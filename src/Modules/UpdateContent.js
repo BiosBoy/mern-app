@@ -36,7 +36,6 @@ let UpdateContent = (targetContainer) => {
     tempSalary.value = salary.innerHTML;
     tempSalary.setAttribute('type', 'number');
 
-
     contentModal.appendChild(tempFirst_name);
     contentModal.appendChild(tempLast_name);
     contentModal.appendChild(tempBirth_date);

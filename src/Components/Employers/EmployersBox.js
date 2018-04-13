@@ -1,18 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import DOMClassNames from '../../Variables/DOMClassNames'
 import Header from  '../Header/Header';
 import Footer from '../Footer/Footer';
 import EmployersList from './EmployersList';
 import EmployerForm from './EmployerForm';
-import loginError from '../../Modules/LoginError';
 import deleteWaitRes from '../../Modules/DeleteWaitRes';
 import deleteError from './../../Modules/DeleteWaitRes';
 import changeWaitRes from '../../Modules/ChangeWaitRes';
 import changeError from '../../Modules/ChangeError';
-import Preloader from '../Preloader/Preloader'
 import preloaderRunner from '../../Modules/PreloaderRunner'
-import DOMClassNames from '../../Variables/DOMClassNames'
 
 class EmployersBox extends Component {
     constructor(props) {
@@ -52,7 +50,7 @@ class EmployersBox extends Component {
         });
         console.log('State has been updated manually! New state:', this.state.employers);
 
-        axios.post(this.props.url, newEmployer)
+        axios.post("http://localhost:3016/employers/", newEmployer)
             .catch(err => {
                 console.error(err);
             });
@@ -61,7 +59,7 @@ class EmployersBox extends Component {
     handleCommentDelete = (targetContainer, id) => {
         deleteWaitRes(targetContainer, false);
         console.log('Employer will be deleted! Employer ID: ', id);
-        axios.delete(`${this.props.url}/${id}`, {withCredentials: true})
+        axios.delete("http://localhost:3016/employers/"+id, {withCredentials: true})
             .catch(err => {
                 console.error(err);
                 deleteWaitRes(targetContainer, true);
@@ -72,7 +70,7 @@ class EmployersBox extends Component {
     }
 
     handleCommentUpdate = (id, employer) => {
-        axios.put(`${this.props.url}/${id}`, employer, {withCredentials: true})
+        axios.put("http://localhost:3016/employers/"+id, employer, {withCredentials: true})
             .then(() => {
                 setTimeout(() => {
                     document.querySelector('.containerModal').remove();
@@ -154,15 +152,19 @@ class EmployersBox extends Component {
             <Fragment>
                 <Header/>
                 {this.state.navigate 
-                ? <div onClick={this.handleClick}  className="employers-login">
-                    <div className="employers-login col-lg-9 mx-auto d-flex flex-column justify-content-center text-center align-items-center">
-                        <div className="employers-login-text">
+                ? <div onClick={this.handleClick} className={DOMClassNames().employersLogin}>
+                    <div className={DOMClassNames().employersLoginContainer}>
+                        <div className={DOMClassNames().employersLoginText}>
                             <h1>You are must be logged to view this page!</h1>
                             <p>Please, coose for you one the two ways to see this page below</p>
                         </div>
-                        <div className="employers-login-buttons">
-                            <button name="login" className="btn btn-success mr-2">Login</button>
-                            <button name="register" className="btn btn-success mr-2">Register</button>
+                        <div className={DOMClassNames().employersLoginButtons}>
+                            <button name="login" className={DOMClassNames().employersLoginButtonLogin}>
+                                Login
+                            </button>
+                            <button name="register" className={DOMClassNames().employersLoginButtonReg}>
+                                Register
+                            </button>
                         </div>
                     </div>
                   </div>
@@ -172,7 +174,8 @@ class EmployersBox extends Component {
                         onCommentDelete={ this.handleCommentDelete }
                         onCommentUpdate={ this.handleCommentUpdate }
                         employers={ this.state.employers } />
-                    <EmployerForm onCommentSubmit={ this.handleCommentSubmit } handleClick={this.handleClick}/>
+                    <EmployerForm onCommentSubmit={ this.handleCommentSubmit } 
+                        handleClick={this.handleClick}/>
                 </div>}
                 <Footer/>
             </Fragment>

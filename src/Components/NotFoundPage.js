@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
+import DOMClassNames from '../Variables/DOMClassNames'
 import Header from  './Header/Header';
 import Footer from './Footer/Footer';
 
@@ -11,8 +12,8 @@ class NotFoundPage extends Component {
         }
     }
 
-    handleClick = (e) => {
-        let target = e.target;
+    handleClick = () => {
+        this.props.history.push("");
         this.setState({
             navigate: true
         });
@@ -25,13 +26,16 @@ class NotFoundPage extends Component {
         return (
             <Fragment>
                 <Header/>
-                <div className="page-not-found col-lg-9 mx-auto d-flex flex-column justify-content-center text-center align-items-center">
-                    <div className="page-not-found-text">
+                <div className={DOMClassNames().pageNotFound}>
+                    <div className={DOMClassNames().pageNotFoundText}>
                         <h1>Oops! 404 Page not found!</h1>
                     </div>
-                    <div className="page-not-found-buttons">
+                    <div className={DOMClassNames().pageNotFoundButtons}>
                         <p>Go to the main Employers page</p>
-                        <button className="btn btn-success" onClick={this.handleClick}>Go ahead</button>
+                        <button className={DOMClassNames().pageNotFoundButton} 
+                            onClick={this.handleClick}>
+                            Go ahead
+                        </button>
                     </div>
                 </div>
                 <Footer/>

@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import DOMClassNames from '../../Variables/DOMClassNames'
 import Header from  '../Header/Header';
 import Footer from '../Footer/Footer';
-import Preloader from '../Preloader/Preloader'
 import preloaderRunner from '../../Modules/PreloaderRunner'
-import axios from 'axios';
 
 class LogoutPage extends Component {
     constructor(props) {
@@ -55,14 +55,14 @@ class LogoutPage extends Component {
         return (
             <Fragment>
                 <Header/>
-                <div className="employers-logout col-lg-9 mx-auto d-flex flex-column justify-content-center text-center align-items-center">
-                    <div className="employers-logout-text">
+                <div className={DOMClassNames().employersLogout}>
+                    <div className={DOMClassNames().employersLogoutText}>
                         <h1>You succeessfully logouted!</h1>
                         <p>You will be redirected to the main page shortly</p>
                     </div>
-                    <div className="employers-logout-buttons d-flex row align-items-center align-middle justify-content-between">
+                    <div className={DOMClassNames().employersLogoutButtons}>
                         <p>Manual redirection</p>
-                        <button className="btn btn-success mr-2" onClick={this.handleClick}>Go now</button>
+                        <button className={DOMClassNames().employersLogoutButton} onClick={this.handleClick}>Go now</button>
                     </div>
                 </div>
                 <Footer/>

@@ -5,7 +5,7 @@ class Main extends React.Component {
     render() {
         return (
             <div className={DOMClassNames().todosFooter}>
-                <p>Nanananana</p>
+                <p>This page is currently in progress. Come back later.</p>
             </div>
         )
     }

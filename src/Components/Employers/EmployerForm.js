@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import DOMClassNames from '../../Variables/DOMClassNames'
 
 class EmployerForm extends Component {
@@ -53,11 +51,14 @@ class EmployerForm extends Component {
                             value='Add new Employer'/>
                     </form>
                 </div>
-                <div className="logout-form d-flex justify-content-center align-items-center">
-                    <div className="logout-form-content">
+                <div className={DOMClassNames().employersListLogoutFrom}>
+                    <div className={DOMClassNames().employersListLogoutContent}>
                         <p>Want to logout? Just click on the button below</p>
                     </div>
-                    <button onClick={this.props.handleClick} name="logout" className="btn btn-outline-secondary btn-sm">Logout</button>
+                    <button onClick={this.props.handleClick} name="logout" 
+                        className={DOMClassNames().employersListLogout}>
+                        Logout
+                    </button>
                 </div>
             </Fragment>
         )

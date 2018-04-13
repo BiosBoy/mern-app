@@ -1,7 +1,6 @@
 const loginWaitRes = (status) => {
     console.log('Waiting for the server loggining answer...');
     let form = document.querySelector('form');
-    let loginForm = document.querySelector('.login-form');
 
     let div = document.createElement('div'); 
     div.classList.add('loader-mini', 'login-wait');
