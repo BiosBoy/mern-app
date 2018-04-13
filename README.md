@@ -1,5 +1,5 @@
 # MERN-stack App with Auth and sessions storage
-Full-stack App, clear builded on MongoDB-Express-React-NodeJSs-stack for storage security info of employers. Created with ✔️ authentication and 🏰 session storage. 
+Full-stack realtime App, clear builded on MongoDB-Express-React-NodeJSs-stack for storage security info of employers. Created with ✔️ authentication and 🏰 session storage. 
 You can find the live version there: https://mern-app-sviatkuzh.herokuapp.com/
 
 V.1.0 Currently has a problem with Heroku server implemenions, app may crash. Please, clone this .git and start App localy for real tests.
