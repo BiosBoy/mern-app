@@ -94,7 +94,7 @@ class LoginPage extends Component {
 
     componentDidMount() {
         preloaderRunner();
-        axios.get('http://mern-app-sviatkuzh.herokuapp.com/auth/login', {withCredentials: true})
+        axios.get('http://mern-app-sviatkuzh.herokuapp.com:3016/auth/login', {withCredentials: true})
             .then(res => {
                 if (res.data === undefined || res.data === '') {
                     console.log('User does not loggined. Login now!');
