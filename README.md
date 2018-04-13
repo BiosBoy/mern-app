@@ -2,7 +2,7 @@
 Full-stack App, clear builded on MongoDB-Express-React-NodeJSs-stack for storage security info of employers. Created with ✔️ authentication and 🏰 session storage. 
 You can find the live version there: https://mern-app-sviatkuzh.herokuapp.com/
 
-V.1.0 Currently has a problem with Heroku server implemenions, app may crash. Please, close this .git and start App localy.
+V.1.0 Currently has a problem with Heroku server implemenions, app may crash. Please, clone this .git and start App localy.
 
 # V.1.0
  - Created MongoDB storage and integrated with Express;
