@@ -20,4 +20,9 @@ How to start the App -> `yarn start-dev` or `npm run start-dev` inside the main 
  - Added stability;
  - Performance improvements;
  - Styles improvements;
- - Bug fixes;
+ - Bug fixes.
+
+#1.4 
+ - Added perfomance;
+ - Movet React component logic into the Container-Component model;
+ - Some bug fixes.
