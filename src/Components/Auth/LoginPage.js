@@ -28,7 +28,7 @@ class LoginPage extends Component {
             logpassword: e.target.password.value
         }
 
-        axios.post('http://mern-app-sviatkuzh.herokuapp.com:3016/auth/login', userLogin, {withCredentials: true})
+        axios.post('http://localhost:3016/auth/login', userLogin, {withCredentials: true})
             .then(() => {
                 console.log('User loged successful! Redirection on the Employers page...');
                 let form = document.querySelector('form');
@@ -94,7 +94,7 @@ class LoginPage extends Component {
 
     componentDidMount() {
         preloaderRunner();
-        axios.get('http://mern-app-sviatkuzh.herokuapp.com:3016/auth/login', {withCredentials: true})
+        axios.get('http://localhost:3016/auth/login', {withCredentials: true})
             .then(res => {
                 if (res.data === undefined || res.data === '') {
                     console.log('User does not loggined. Login now!');
