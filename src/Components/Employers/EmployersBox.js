@@ -27,7 +27,7 @@ class EmployersBox extends Component {
     }
 
     loadCommentsFromServer = () => {
-        axios.get('/employers', {withCredentials: true})
+        axios.get(':3016/employers', {withCredentials: true})
             .then(res => {
                 if (res.data.sess === undefined || res.data.sess === '') {
                     this.setState({
