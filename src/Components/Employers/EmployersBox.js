@@ -3,9 +3,10 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import DOMClassNames from '../../Variables/DOMClassNames'
 import Header from  '../Header/Header';
-import Footer from '../Footer/Footer';
+import EmployersBoxLogin from './EmployersBoxLogin'
 import EmployersList from './EmployersList';
 import EmployerForm from './EmployerForm';
+import Footer from '../Footer/Footer';
 import deleteWaitRes from '../../Modules/DeleteWaitRes';
 import deleteError from './../../Modules/DeleteWaitRes';
 import changeWaitRes from '../../Modules/ChangeWaitRes';
@@ -57,6 +58,7 @@ class EmployersBox extends Component {
     };
 
     handleCommentDelete = (targetContainer, id) => {
+        console.log('handleCommentDelete',targetContainer, id);
         deleteWaitRes(targetContainer, false);
         console.log('Employer will be deleted! Employer ID: ', id);
         axios.delete("http://localhost:3016/employers/"+id, {withCredentials: true})
@@ -70,6 +72,7 @@ class EmployersBox extends Component {
     }
 
     handleCommentUpdate = (id, employer) => {
+        console.log('handleCommentUpdate', employer, id);
         axios.put("http://localhost:3016/employers/"+id, employer, {withCredentials: true})
             .then(() => {
                 setTimeout(() => {
@@ -140,7 +143,6 @@ class EmployersBox extends Component {
     };
 
     render() {
-        console.log(this.props.history);
         if (this.state.loginRedirect) {
             return <Redirect to="/auth/login" />
         } else if (this.state.registrationRedirect) {
@@ -152,22 +154,7 @@ class EmployersBox extends Component {
             <Fragment>
                 <Header/>
                 {this.state.navigate 
-                ? <div onClick={this.handleClick} className={DOMClassNames().employersLogin}>
-                    <div className={DOMClassNames().employersLoginContainer}>
-                        <div className={DOMClassNames().employersLoginText}>
-                            <h1>You are must be logged to view this page!</h1>
-                            <p>Please, coose for you one the two ways to see this page below</p>
-                        </div>
-                        <div className={DOMClassNames().employersLoginButtons}>
-                            <button name="login" className={DOMClassNames().employersLoginButtonLogin}>
-                                Login
-                            </button>
-                            <button name="register" className={DOMClassNames().employersLoginButtonReg}>
-                                Register
-                            </button>
-                        </div>
-                    </div>
-                  </div>
+                ? <EmployersBoxLogin handleClick={this.handleClick} />
                 : <div className={DOMClassNames().mainContainer} >
                     <h1 className={DOMClassNames().h2Header}>Employers:</h1>
                     <EmployersList

@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import DOMClassNames from '../../Variables/DOMClassNames'
+import LoginPageComponent from './LoginPageComponent';
+import LoginPageAlreadyLoginComponent from './LoginPageAlreadyLoginComponent';
 import Header from  '../Header/Header';
 import Footer from '../Footer/Footer';
 import loginError from '../../Modules/LoginError';
@@ -124,31 +125,18 @@ class LoginPage extends Component {
         return (
             <Fragment>
                 <Header/>
-                {this.state.navigate === true
-                ? <div className={DOMClassNames().loginAlready}>
-                    <h2>You already loggined!</h2>
-                    <p>You successul loggen previously, so you does not need to login again, just go ahead:</p>
-                    <button name="redirect-employers" className={DOMClassNames().loginRedirectToEmployers} onClick={this.handleClick}>Go to the Employers List!</button>
-                  </div>
-                : <div className={DOMClassNames().loginForm}>
-                    <h1>This is the Auth Page!</h1>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email_login">E-mail</label>
-                            <input name="email" type="email" className={DOMClassNames().emailLogin} aria-describedby="emailHelp" placeholder="Enter email" required />
-                            <small id="emailHelp" className={DOMClassNames().loginText}>We'll never share your email with anyone else.</small>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password_login">Password</label>
-                            <input name="password" type="password" className={DOMClassNames().passwordLogin} placeholder="Password" required />
-                        </div>
-                        <button type="submit" className={DOMClassNames().loginButton}>Submit</button>
-                    </form>
-                    <div className={DOMClassNames().loginRedirToRegist}>
-                        <span className={DOMClassNames().loginRedirToRegistText}>Still does not have an account?</span> 
-                        <button name="redirect-registration" className={DOMClassNames().loginRedirToRegistButton} onClick={this.handleClick}>Sign up now!</button>
-                    </div>
-                </div>}
+                { this.state.navigate === true
+                ? <LoginPageAlreadyLoginComponent 
+                    redirectEmployers={this.state.redirectEmployers} 
+                    redirectRegistration={this.props.redirectEmployers} 
+                    handleClick={this.handleClick}
+                  />
+                : <LoginPageComponent
+                    redirectEmployers={this.state.redirectEmployers} 
+                    redirectRegistration={this.props.redirectEmployers} 
+                    handleSubmit={this.handleSubmit}
+                    handleClick={this.handleClick}
+                  /> }
                 <Footer/>
             </Fragment>
         )

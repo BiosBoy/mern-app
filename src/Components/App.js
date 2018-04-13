@@ -5,7 +5,7 @@ import LoginPage from './Auth/LoginPage'
 import RegistrationPage from './Auth/RegistrationPage';
 import LogoutPage from './Auth/LogoutPage'
 import EmployersBox from './Employers/EmployersBox';
-import NotFoundPage from './NotFoundPage'
+import NotFoundPage from './404/NotFoundPage'
 
 class App extends Component {
     render() {

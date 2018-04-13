@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import DOMClassNames from '../../Variables/DOMClassNames'
 import registrationError from '../../Modules/RegistrationError'
 import registrationWaitRes from '../../Modules/RegistrationWaitRes';
 import regPassChecker from '../../Modules/RegPassChecker';
 import preloaderRunner from '../../Modules/PreloaderRunner'
 import Header from  '../Header/Header';
+import RegistrationPageAlreadeRegComponent from './RegistrationPageAlreadeRegComponent';
+import RegistrationPageComponent from './RegistrationPageComponent'
 import Footer from '../Footer/Footer';
 
 class RegistrationPage extends Component {
@@ -147,55 +148,15 @@ class RegistrationPage extends Component {
             <Fragment>
                 <Header/>
                 {this.state.navigate 
-                ? <div className={DOMClassNames().logoutRegisteredAlready}>
-                    <div className={DOMClassNames().logoutRegisteredAlreadyText}>
-                        <h1>You are already registered!</h1>
-                        <p>To register an another account - please, make logout first.</p>
-                    </div>
-                    <div className={DOMClassNames().logoutRegisteredAlreadyButtons}>
-                        <p>Click the button to logout</p>
-                        <button onClick={this.handleClick} className={DOMClassNames().logoutRegisteredAlreadyButton}>Logout</button>
-                    </div>
-                  </div>
-                : <div className={DOMClassNames().RegistrationContainer}>
-                    <div className={DOMClassNames().RegistrationContainerRow}>
-                        <div className={DOMClassNames().RegistrationRowCol}>
-                            <h1 className={DOMClassNames().RegistrationColH1}>Registration new User</h1>
-                            <div className={DOMClassNames().RegistrationColLg12}>
-                                <div className={DOMClassNames().RegistrationCol}>
-                                    <div className={DOMClassNames().RegistrationCard}>
-                                        <div className={DOMClassNames().RegistrationCardHeader}>
-                                            <h3 className={DOMClassNames().RegistrationCardHeaderH3}>Sign Up</h3>
-                                        </div>
-                                        <div className={DOMClassNames().RegistrationCardBody}>
-                                            <form onSubmit={this.handleSubmit} onChange={this.handleChange} className="form"  autoComplete="off">
-                                                <div className={DOMClassNames().RegistrationFormGroup}>
-                                                    <label htmlFor="inputName">Name</label>
-                                                    <input name="username" type="text" className={DOMClassNames().RegistrationFormControl} id="inputName" placeholder="full name" required/>
-                                                </div>
-                                                <div className={DOMClassNames().RegistrationFormGroup}>
-                                                    <label htmlFor="inputEmail3">Email</label>
-                                                    <input name="email" type="email" className={DOMClassNames().RegistrationFormControl} id="inputEmail3" placeholder="email@gmail.com" required/>
-                                                </div>
-                                                <div className={DOMClassNames().RegistrationFormGroup}>
-                                                    <label htmlFor="inputPassword3">Password</label>
-                                                    <input value={this.state.passValue  || ''} name="password" type="password" className={DOMClassNames().RegistrationFormControl} id="inputPassword3" min="5" placeholder="password" title="At least 6 characters with letters and numbers" required/>
-                                                </div>
-                                                <div className={DOMClassNames().RegistrationFormGroup}>
-                                                    <label htmlFor="inputVerify3">Verify</label>
-                                                    <input value={this.state.passValueConf  || ''} name="passwordConf" type="password" className={DOMClassNames().RegistrationFormControl} id="inputVerify3" min="5" placeholder="password (again)" required/>
-                                                </div>
-                                                <div className={DOMClassNames().RegistrationFormGroup}>
-                                                    <button type="submit" className={DOMClassNames().RegistrationFormButton}>Register</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>}
+                ? <RegistrationPageAlreadeRegComponent
+                    handleClick={this.handleClick}
+                />
+                : <RegistrationPageComponent
+                    passValue={this.state.passValue}
+                    passValueConf={this.state.passValueConf}
+                    handleSubmit={this.handleSubmit}
+                    handleChange={this.handleChange}
+                />}
                 <Footer/>
             </Fragment>
         )
