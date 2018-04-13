@@ -242,7 +242,7 @@ router.route('/employers/:employer_id')
 
 app.use('/', router);
 
-const port = process.env.PORT || 3016;
+const port = process.env.API_PORT || 3016;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
