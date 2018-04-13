@@ -15,3 +15,9 @@ How to start the App -> `yarn start-dev` or `npm run start-dev` inside the main 
  - Added Headers with security implements for prevent SXX attacs and other;
  - Client side builded on pure React 16x and ES6+;
  - Website styled by Bootstrap 4 library.
+
+# V.1.2
+ - Added stability;
+ - Performance improvements;
+ - Styles improvements;
+ - Bug fixes;
